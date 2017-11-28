@@ -2,6 +2,7 @@ def score(game):
     result = 0
     frame = 1
     in_first_half = True
+
     for i in range(len(game)):
         if game[i] == '/':
             result += 10 - last
