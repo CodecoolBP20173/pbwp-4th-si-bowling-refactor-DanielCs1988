@@ -11,7 +11,7 @@ def score(rolls):
         if frame < 10 and grade_roll(rolls[i]) == 10:
             if rolls[i] == '/':
                 result += grade_roll(rolls[i + 1])
-            elif rolls[i] == 'X' or rolls[i] == 'x':
+            if rolls[i] in 'xX':
                 result += grade_roll(rolls[i + 1])
                 if rolls[i + 2] == '/':
                     result += 10 - grade_roll(rolls[i + 1])
@@ -22,7 +22,7 @@ def score(rolls):
         if not in_first_half:
             frame += 1
         in_first_half = False if in_first_half else True
-        if rolls[i] == 'X' or rolls[i] == 'x':
+        if rolls[i] in 'xX':
             in_first_half = True
             frame += 1
     return result
