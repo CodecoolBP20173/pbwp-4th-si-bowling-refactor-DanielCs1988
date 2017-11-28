@@ -40,4 +40,4 @@ def grade_roll(roll):
     if roll == '-':
         return 0
 
-    raise ValueError()
+    raise ValueError("Invalid roll!")
