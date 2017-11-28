@@ -31,12 +31,12 @@ def score(rolls):
 
 
 def grade_roll(roll):
+    """Returns the value of a given roll."""
+
     if roll in '123456789':
         return int(roll)
-
     if roll in 'xX/':
         return 10
-
     if roll == '-':
         return 0
 
