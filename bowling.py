@@ -18,12 +18,10 @@ def score(rolls):
                 else:
                     result += grade_roll(rolls[i + 2])
         last = grade_roll(rolls[i])
+        
         if not in_first_half:
             frame += 1
-        if in_first_half == True:
-            in_first_half = False
-        else:
-            in_first_half = True
+        in_first_half = False if in_first_half else True
         if rolls[i] == 'X' or rolls[i] == 'x':
             in_first_half = True
             frame += 1
