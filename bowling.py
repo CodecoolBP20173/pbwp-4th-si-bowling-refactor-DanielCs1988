@@ -32,10 +32,10 @@ def score(game):
 def get_value(char):
     if char in '123456789':
         return int(char)
-    if char == 'X' or char == 'x':
+
+    if char in 'xX/':
         return 10
-    if char == '/':
-        return 10
+
     if char == '-':
         return 0
 
