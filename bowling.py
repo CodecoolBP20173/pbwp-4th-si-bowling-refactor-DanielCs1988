@@ -28,6 +28,7 @@ def score(rolls):
         if rolls[i] in 'xX':
             in_first_half = True
             frame += 1
+
     return result
 
 
