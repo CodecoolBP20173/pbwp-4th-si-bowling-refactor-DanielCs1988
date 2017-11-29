@@ -2,6 +2,8 @@ LAST_FRAME = 10
 
 
 def score(rolls):
+    """Takes bowling rolls in a game as a list, calculates and returns the score."""
+
     result = 0
     # Frame equals round in bowling game. Each round has up to 2 rolls.
     frame = 1
