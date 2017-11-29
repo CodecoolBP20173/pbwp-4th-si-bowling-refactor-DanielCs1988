@@ -25,12 +25,11 @@ def score(rolls):
                     result += grade_roll(rolls[current_roll + 2])
         last = grade_roll(rolls[current_roll])
 
-        if not first_roll_in_frame:
+        if not first_roll_in_frame or rolls[current_roll] in 'xX':
             frame += 1
-        first_roll_in_frame = False if first_roll_in_frame else True
-        if rolls[current_roll] in 'xX':
             first_roll_in_frame = True
-            frame += 1
+        else:
+            first_roll_in_frame = False
 
     return result
 
