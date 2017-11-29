@@ -15,14 +15,8 @@ def score(rolls):
         if rolls[current_roll] == '/':
             result -= last
 
-        if frame < LAST_FRAME:
-            if rolls[current_roll] in 'xX/':
-                result += grade_roll(rolls[current_roll + 1])
-            if rolls[current_roll] in 'xX':
-                if rolls[current_roll + 2] == '/':
-                    result += 10 - grade_roll(rolls[current_roll + 1])
-                else:
-                    result += grade_roll(rolls[current_roll + 2])
+        if frame < LAST_FRAME and rolls[current_roll] in 'xX/':
+            result = calculate_special_rolls(rolls, current_roll, result)
         last = grade_roll(rolls[current_roll])
 
         if not first_roll_in_frame or rolls[current_roll] in 'xX':
@@ -34,9 +28,20 @@ def score(rolls):
     return result
 
 
+def calculate_special_rolls(rolls, current_roll, result):
+    """Calculates score for special (spare, strike) rolls."""
+    result += grade_roll(rolls[current_roll + 1])
+    if rolls[current_roll] in 'xX':
+        if rolls[current_roll + 2] == '/':
+            result += 10 - grade_roll(rolls[current_roll + 1])
+        else:
+            result += grade_roll(rolls[current_roll + 2])
+
+    return result
+
+
 def grade_roll(roll):
     """Returns the value of a given roll."""
-
     if roll in '123456789':
         return int(roll)
     if roll in 'xX/':
