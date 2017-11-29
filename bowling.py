@@ -5,7 +5,7 @@ def score(rolls):
     result = 0
     # Frame equals round in bowling game. Each round has up to 2 rolls.
     frame = 1
-    in_first_half = True
+    first_round_in_frame = True
 
     for current_roll in range(len(rolls)):
         if rolls[current_roll] == '/':
@@ -23,11 +23,11 @@ def score(rolls):
                     result += grade_roll(rolls[current_roll + 2])
         last = grade_roll(rolls[current_roll])
 
-        if not in_first_half:
+        if not first_round_in_frame:
             frame += 1
-        in_first_half = False if in_first_half else True
+        first_round_in_frame = False if first_round_in_frame else True
         if rolls[current_roll] in 'xX':
-            in_first_half = True
+            first_round_in_frame = True
             frame += 1
 
     return result
